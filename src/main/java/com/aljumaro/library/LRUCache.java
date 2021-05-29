@@ -5,13 +5,13 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- *  Least Recently Used Cache.
+ * Least Recently Used Cache.
  * 
- *  This implementation is backed by a HashMap and a double linked list.
+ * This implementation is backed by a HashMap and a double linked list.
  * 
- *  The put and get operations are executed in constant time O(1). 
+ * The put and get operations are executed in constant time O(1).
  * 
- * */
+ */
 public class LRUCache<K, V> {
 
 	private final Map<K, CacheEntry<K, V>> map;
@@ -121,7 +121,7 @@ public class LRUCache<K, V> {
 		} while (entry != null);
 		return result.toString();
 	}
-	
+
 	private static class CacheEntry<K, V> {
 
 		private K key;

@@ -38,12 +38,12 @@ public class LRUCacheTest {
 			cache.put(i, new Element(i));
 		}
 		System.out.println(cache.toString());
-		
+
 		// Then
 		Assertions.assertEquals(4, cache.getCurrentSize());
 		Assertions.assertTrue(cache.get(1).isEmpty());
 	}
-	
+
 	@Test
 	public void testReorder() {
 		// Given
@@ -53,15 +53,15 @@ public class LRUCacheTest {
 		for (int i = 1; i <= numElements; i++) {
 			cache.put(i, new Element(i));
 		}
-		
+
 		cache.get(2);
 		System.out.println(cache.toString());
-		
+
 		// Then
 		Assertions.assertEquals(2, cache.getFirstKey());
 		Assertions.assertEquals(1, cache.getLastKey());
 	}
-	
+
 	@Test
 	public void testReorderFirstElement() {
 		// Given
@@ -71,16 +71,16 @@ public class LRUCacheTest {
 		for (int i = 1; i <= numElements; i++) {
 			cache.put(i, new Element(i));
 		}
-		
+
 		Optional<Element> e = cache.get(3);
 		System.out.println(cache.toString());
-		
+
 		// Then
 		Assertions.assertEquals(3, cache.getFirstKey());
 		Assertions.assertEquals(1, cache.getLastKey());
 		Assertions.assertEquals(3, e.get().getId());
 	}
-	
+
 	@Test
 	public void testReorderLastElement() {
 		// Given
@@ -94,13 +94,13 @@ public class LRUCacheTest {
 		System.out.println(cache.toString());
 		Optional<Element> e = cache.get(1);
 		System.out.println(cache.toString());
-		
+
 		// Then
 		Assertions.assertEquals(1, cache.getFirstKey());
 		Assertions.assertEquals(2, cache.getLastKey());
 		Assertions.assertEquals(1, e.get().getId());
 	}
-	
+
 	@Test
 	public void testElementNotFound() {
 		// Given
@@ -110,16 +110,16 @@ public class LRUCacheTest {
 		for (int i = 1; i <= numElements; i++) {
 			cache.put(i, new Element(i));
 		}
-		
+
 		Optional<Element> e = cache.get(2);
 		System.out.println(cache.toString());
-		
+
 		// Then
 		Assertions.assertEquals(1, cache.getFirstKey());
 		Assertions.assertEquals(1, cache.getLastKey());
 		Assertions.assertTrue(e.isEmpty());
 	}
-	
+
 	@Test
 	public void fullTest() {
 		// Given
@@ -132,8 +132,8 @@ public class LRUCacheTest {
 				cache.get(i - 1);
 			}
 		}
-		System.out.println(cache.toString());		
-		
+		System.out.println(cache.toString());
+
 		// Then
 		Assertions.assertEquals(10, cache.getFirstKey());
 		Assertions.assertEquals(6, cache.getLastKey());
